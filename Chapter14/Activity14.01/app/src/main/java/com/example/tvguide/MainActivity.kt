@@ -3,8 +3,10 @@ package com.example.tvguide
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tvguide.databinding.ActivityMainBinding
 import com.example.tvguide.model.TVShow
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
@@ -21,7 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val tvShowRecyclerView: RecyclerView = findViewById(R.id.tv_show_list)
         tvShowRecyclerView.adapter = tvShowAdapter
@@ -33,13 +37,16 @@ class MainActivity : AppCompatActivity() {
             }
         })[TVShowViewModel::class.java]
 
+        binding.viewModel = tvShowViewModel
+        binding.lifecycleOwner = this
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    tvShowViewModel.tvShows.collect { tvShows ->
-                        tvShowAdapter.addTVShows(tvShows)
-                    }
-                }
+//                launch {
+//                    tvShowViewModel.tvShows.collect { tvShows ->
+//                        tvShowAdapter.addTVShows(tvShows)
+//                    }
+//                }
                 launch {
                     tvShowViewModel.error.collect { error ->
                         if (error.isNotEmpty()) Snackbar.make(tvShowRecyclerView, error, Snackbar.LENGTH_LONG).show()

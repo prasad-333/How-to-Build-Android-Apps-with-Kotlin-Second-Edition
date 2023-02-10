@@ -1,7 +1,10 @@
 package com.example.tvguide.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 
+
+@Entity(tableName = "tvshows",  primaryKeys = [("id")])
 data class TVShow(
     @field:Json(name = "backdrop_path")
     val backdropPath: String? = "",
