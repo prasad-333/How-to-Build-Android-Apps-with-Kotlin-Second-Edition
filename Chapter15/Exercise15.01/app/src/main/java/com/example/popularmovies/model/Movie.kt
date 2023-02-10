@@ -1,7 +1,9 @@
 package com.example.popularmovies.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 
+@Entity(tableName = "movies",  primaryKeys = [("id")])
 data class Movie(
     val adult: Boolean = false,
     val backdrop_path: String = "",
