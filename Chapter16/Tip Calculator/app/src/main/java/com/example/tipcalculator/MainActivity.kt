@@ -1,5 +1,6 @@
 package com.example.tipcalculator
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
                 putExtra("amount", amount)
                 putExtra("percent", percent)
             }
-            startActivity(intent)
+            //startActivity(intent)
+            startActivity(intent, ActivityOptions .makeSceneTransitionAnimation(this).toBundle())
         }
     }
 
