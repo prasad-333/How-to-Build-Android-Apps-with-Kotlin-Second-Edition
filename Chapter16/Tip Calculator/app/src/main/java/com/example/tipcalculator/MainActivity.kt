@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,11 @@ class MainActivity : AppCompatActivity() {
                 putExtra("percent", percent)
             }
             //startActivity(intent)
-            startActivity(intent, ActivityOptions .makeSceneTransitionAnimation(this).toBundle())
+            //startActivity(intent, ActivityOptions .makeSceneTransitionAnimation(this).toBundle())
+            //16,02
+            val image: ImageView = findViewById(R.id.image)
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this, image, "transition_name").toBundle())
+
         }
     }
 
