@@ -28,5 +28,12 @@
         <OnClick
             app:clickAction="toggle"
             app:targetId="@id/image" />
+        <KeyFrameSet >
+            <KeyPosition
+                app:motionTarget="@+id/image"
+                app:framePosition="50"
+                app:keyPositionType="parentRelative"
+                app:percentX="1.5" />
+        </KeyFrameSet>
     </Transition>
 </motion_scene>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/motion_scene"
-    tools:context=".OutputActivity">
+    tools:context=".OutputActivity"
+    app:motionDebug="SHOW_ALL" >
 
     <ImageView
         android:id="@+id/image"
